@@ -1,0 +1,10 @@
+// 특정일 기준으로 이전 or 이후의 날짜
+adddate() 
+subdate() 
+// board테이블에서 작성일이 오늘기준 10일전 이후에 적은 글
+select * from board where writeday > subdate(now(),10);
+// board테이블에서 작성일이 '2023년1월1일 10일 이후 날짜보다 늦게 작성한 글)
+select * from board where writeday > adddate('2023-01-01',10);
+// 2개의 날짜의 차이
+datediff()
+select writeday, datediff(writeday, now()) from board;

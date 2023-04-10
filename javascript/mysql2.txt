@@ -1,0 +1,46 @@
+length()
+left()
+right()
+substring()
+select phone , left(phone,3), right(phone,4) ,substr(phone,5,4) from member;
+
+instr() : indexOf()와 비슷함
+locate()
+ select email, instr(email,'@') , locate('@',email) from member;
+
+select email, instr(email,'@') from member;
+
+dayofweek(날짜)
+ select dayofweek(writeday) , writeday, dayofweek(now()) from member;
+
+monthname(날짜)
+select monthname(writeday), monthname(now()) from member;
+
+dayofyear(날짜)
+ select writeday, dayofyear(writeday), dayofyear(now()) from member;
+
+last_day(날짜)
+
+max()
+select max(eng) from sungjuk;
+
+min()
+select min(eng) from sungjuk;
+
+count()
+select count(*) from sungjuk;
+
+sum()
+avg()
+ select sum(kor), avg(kor) from sungjuk;
+
+
+group by 필드명 : 필드를 그룹으로 묶어서 작업
+// 아래의 쿼리는 member에 없는 userid도 가져온다 
+select userid,sum(tprice) from reserve group by userid; 
+ 
+// member에 없는 userid는 가져오지 않는다.. 
+ select userid, sum(tprice) from reserve  where userid=any(select userid from member) group by userid;
+
+select userid, (select sum(tprice) from reserve
+where userid=member.userid) as tprice from member;

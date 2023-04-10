@@ -1,0 +1,24 @@
+ceil()   : 올림
+round() : 반올림
+floor()  : 내림
+
+* 국어점수가 70점~90점 사이의 값만 출력
+ select * from sungjuk where kor>=70 and kor<=90;
+
+* 필드명 between 값1 and 값2
+ select * from sungjuk where kor between 70 and 90;
+
+* ifnull(필드명,"대체문자열")
+select ifnull(name,"이름모름") from sungjuk;
+select ifnull(kor,0) , ifnull(eng,0), ifnull(mat,0) from sungjuk;
+
+* isnull(필드명) => 해당필드가 null이면 참이 발생
+update sungjuk set kor=0 where isnull(kor);
+
+* if(조건,"참일경우","거짓일경우")
+select name,eng, if(eng>=70,'합격','불합격' ) from sungjuk;
+
+ select name,eng,
+  if(eng>=90,"A",if(eng>=80,"B",if(eng>=70,"C",ifeng>=60,"D","F")) )) from sungjuk;
+
+
